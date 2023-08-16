@@ -40,4 +40,13 @@ with open('/dbfs/tmp/location.json', 'w') as f:
 
 # COMMAND ----------
 
+!ls -l /dbfs/tmp/*.csv
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT * FROM csv.`/tmp/customer_churn.csv`
+
+# COMMAND ----------
+
 
