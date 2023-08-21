@@ -77,7 +77,7 @@ def answer_as_role(user_question, role, verbose=False):
 # COMMAND ----------
 
 language_model = 'openai'
-switch_to_language_model(language_model)
+llm = switch_to_language_model(language_model)
 
 # COMMAND ----------
 
@@ -107,7 +107,7 @@ print(answer)
 # COMMAND ----------
 
 language_model = 'llamav2'
-switch_to_language_model(language_model)
+llm = switch_to_language_model(language_model)
 
 # COMMAND ----------
 
