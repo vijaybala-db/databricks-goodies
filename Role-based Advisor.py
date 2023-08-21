@@ -15,7 +15,7 @@
 # MAGIC What are the top 5 things I should do in the next week towards these goals?
 # MAGIC ```
 # MAGIC
-# MAGIC and receive answers from each role's perspective.
+# MAGIC and receive answers from each role's perspective. By asking the same question to multiple language models (OpenAI and Llama V2 in this case), it becomes possible to compare their relative performance.
 
 # COMMAND ----------
 
