@@ -30,7 +30,7 @@ def switch_to_language_model(language_model):
     llm = OpenAI(temperature=0.0, max_tokens=500)
     return llm
   elif language_model == 'llamav2':
-    llm = Databricks(cluster_driver_port=7777, cluster_id='0818-171600-mjlzuq5m',
+    llm = Databricks(cluster_driver_port=7777, cluster_id='0822-051246-6h0nnn2l',
                   model_kwargs={'temperature':0.0, 'max_new_tokens':500})
     return llm
   else:
