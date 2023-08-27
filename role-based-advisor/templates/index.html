@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Role-based Advisor</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="form-group">
+            <textarea id="question" class="form-control" rows="4" placeholder="Type your question here"></textarea>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="ask('doctor')">Doctor</button>
+            <button class="btn btn-primary" onclick="ask('father')">Father</button>
+            <button class="btn btn-primary" onclick="ask('business_partner')">Business Partner</button>
+            <button class="btn btn-primary" onclick="ask('career_coach')">Career Coach</button>
+        </div>
+        <div id="response" class="mt-4"></div>
+        <div>Version 1</div>
+    </div>
+    
+    <script>
+        function ask(role) {
+            var question = document.getElementById("question").value;
+            var responseDiv = document.getElementById("response");
+
+            fetch('ask/' + role, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({role: 'role', question: question})
+            })
+            .then(response => {
+                window.response = response;
+                var data = await response.json();
+                console.log(data);
+            });
+            // .then(response => response.json())
+            // .then(data => {
+            //     var chatBubble = document.createElement("div");
+            //     chatBubble.className = "alert alert-info mt-2";
+            //     chatBubble.textContent = role + ": " + data.answer;
+            //     responseDiv.appendChild(chatBubble);
+            //     document.getElementById("question").value = '';
+            // });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[Unit]
+Description=Flask App Service
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/databricks/driver
+Environment="FLASK_APP=/databricks/driver/advisor.py"
+ExecStart=/databricks/python3/bin/flask run -h 0.0.0.0 -p 8888
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
