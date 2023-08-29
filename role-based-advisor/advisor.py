@@ -1,10 +1,10 @@
-import os
+import os, json
 from langchain.llms import Databricks, OpenAI
 from dotenv import load_dotenv
 from langchain.prompts import ChatPromptTemplate
 
 class RoleBasedAdvisor:
-    def __init__(self, role='doctor', language_model='openai'):
+    def __init__(self, role='doctor', language_model='openai', config_file_path=None):
         self.template_string = """{role_name} \
 Respond to the user question that is delimited in triple backticks \
 with thoughtful and concise instructions that the user can easily implement in their \
@@ -25,6 +25,9 @@ are the top 5 things I should do in the next week towards these goals?"
 
         self.language_model = language_model
         self.llm = self.get_llm(language_model)
+        if config_file_path:
+            with open(config_file_path) as f:
+                self.config = json.load(f)
 
     def get_llm(self, language_model='openai'):
         load_dotenv()
@@ -36,7 +39,7 @@ are the top 5 things I should do in the next week towards these goals?"
             llm = OpenAI(temperature=0.0, max_tokens=500)
             return llm
         elif language_model == 'llamav2':
-            llm = Databricks(cluster_driver_port=7777, cluster_id='0822-051246-6h0nnn2l',
+            llm = Databricks(cluster_driver_port=self.config.port, cluster_id=self.config.cluster_id,
                         model_kwargs={'temperature':0.0, 'max_new_tokens':500})
             return llm
         else:

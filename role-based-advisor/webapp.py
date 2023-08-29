@@ -1,4 +1,9 @@
 from flask import Flask, render_template, request, jsonify
+from advisor import RoleBasedAdvisor
+
+# Create advisor objects for OpenAI and Llama V2
+openai_advisor = RoleBasedAdvisor(language_model='openai')
+llamav2_advisor = RoleBasedAdvisor(language_model='llamav2')
 
 app = Flask("role-based-advisor")
 
