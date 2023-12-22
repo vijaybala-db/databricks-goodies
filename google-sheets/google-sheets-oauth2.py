@@ -23,7 +23,7 @@ spread = gspread_pandas.spread.Spread('1Nxj_hWUKfa4UWlOvXZaI7jgV_o-6e5ShRfYXbhiR
 
 # COMMAND ----------
 
-df = spread.sheet_to_df(sheet='genai_recent_metering')
+df = spread.sheet_to_df(sheet='genai_recent_metering', index=False)
 df
 
 # COMMAND ----------
