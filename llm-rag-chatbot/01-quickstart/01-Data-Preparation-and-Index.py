@@ -317,6 +317,10 @@ print(f"index {vs_index_fullname} on table {source_table_fullname} is ready")
 
 # COMMAND ----------
 
+print(VECTOR_SEARCH_ENDPOINT_NAME, vs_index_fullname)
+
+# COMMAND ----------
+
 # MAGIC %md 
 # MAGIC ## Searching for similar content
 # MAGIC
