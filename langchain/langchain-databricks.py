@@ -58,4 +58,31 @@ chat.invoke([SystemMessage(content='You are a helpful assistant that offers help
 
 # COMMAND ----------
 
+# MAGIC %md
+# MAGIC ### Nutritional Advisor
+
+# COMMAND ----------
+
+# https://python.langchain.com/docs/modules/model_io/prompts/quick_start#chatprompttemplate
+from langchain_core.prompts import ChatPromptTemplate
+chat_template = ChatPromptTemplate.from_messages([
+  ('system', 'You are a helpful AI bot. You offer insights about the nutritional value of various fruits'),
+  ('human', 'Hi, how are you?'),
+  ('ai', 'I am doing well, thanks!'),
+  ('human', '{user_input}')
+])
+chat_template
+
+# COMMAND ----------
+
+messages = chat_template.format_messages(user_input='What is the nutritional value of avocados?')
+messages
+
+# COMMAND ----------
+
+response = chat.invoke(messages)
+print(response.content)
+
+# COMMAND ----------
+
 
