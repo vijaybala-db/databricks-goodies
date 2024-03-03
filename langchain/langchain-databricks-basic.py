@@ -23,4 +23,11 @@ print(chain.invoke('How to write a blog post?'))
 
 # COMMAND ----------
 
+# Invoke arbitrary function
+from langchain_core.runnables import RunnableLambda
+newchain = (chain | RunnableLambda(lambda x:x.upper()))
+newchain.invoke('What tree fits in your hand?')
+
+# COMMAND ----------
+
 
