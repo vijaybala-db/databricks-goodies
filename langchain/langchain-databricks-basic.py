@@ -4,6 +4,20 @@
 
 # COMMAND ----------
 
+def mermaid(definition):
+  displayHTML(f"""
+    <pre class="mermaid">
+    {definition}
+    </pre>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>""")
+
+# COMMAND ----------
+
+mermaid("""graph LR;
+            user_input --> prompt --> chat_model --> output_parser --> lambda_function""")
+
+# COMMAND ----------
+
 # https://python.langchain.com/docs/integrations/llms/databricks
 # https://python.langchain.com/docs/modules/model_io/prompts/quick_start
 # https://python.langchain.com/docs/expression_language/get_started
