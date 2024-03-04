@@ -35,10 +35,11 @@ print(chain.invoke('How to write a blog post?'))
 
 # COMMAND ----------
 
-# Invoke arbitrary function
+# Invoke arbitrary function, and print debug data to the console
 from langchain_core.runnables import RunnableLambda
+from langchain.callbacks.tracers import ConsoleCallbackHandler
 newchain = (chain | RunnableLambda(lambda x:x.upper()))
-newchain.invoke('What tree fits in your hand?')
+newchain.invoke('What tree fits in your hand?', config={'callbacks': [ConsoleCallbackHandler()]})
 
 # COMMAND ----------
 
