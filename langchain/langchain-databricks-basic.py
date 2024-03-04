@@ -5,10 +5,8 @@
 # COMMAND ----------
 
 def mermaid(definition):
-  displayHTML(f"""
-    <pre class="mermaid">
-    {definition}
-    </pre>
+  import IPython
+  return IPython.display.HTML(f"""<pre class="mermaid">{definition}</pre>
     <script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>""")
 
 # COMMAND ----------
