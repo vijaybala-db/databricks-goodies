@@ -19,7 +19,4 @@ FROM main.data_df_metering.workloads_cluster_agg
 WHERE accountId IN (
     'e0e33ab0-450c-4297-8d4d-44982dee184d' --Deloitte
 );""", engine)
-print(df)
-
-#cursor.close()
-#connection.close()
+print(df.to_json(orient='records'))
